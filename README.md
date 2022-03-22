@@ -13,16 +13,7 @@ npm install --save antd-easy-form
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
-
-import MyComponent from 'antd-easy-form'
-import 'antd-easy-form/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+// coming soon
 ```
 
 ## License
