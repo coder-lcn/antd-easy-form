@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from 'react';
 
 interface AntdFormProps {
-  text: string
+  text: string;
 }
 
 export const AntdForm = ({ text }: AntdFormProps) => {
-  return <div>{text}</div>
-}
+  return <div>{text}</div>;
+};
