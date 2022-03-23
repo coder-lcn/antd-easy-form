@@ -1,0 +1,10 @@
+example
+node_modules
+src
+
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.prettierrc
+.travis.yml
