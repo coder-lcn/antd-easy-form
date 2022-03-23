@@ -1,20 +1,20 @@
-import * as React from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import Button from 'antd/lib/button';
 import { DatePicker, Form, FormInstance, Input, InputNumber, Select, Switch } from 'antd';
 import { AntdFormProps, FormItemProps } from './types';
-import 'antd/dist/antd.min.css';
 
 const { RangePicker } = DatePicker;
 
 export const AntdForm = ({ formItems, onFinished, onReset: onResetFn }: AntdFormProps) => {
-  const formRef = React.useRef<FormInstance | null>(null);
+  const [loaded, setLoaded] = useState(process.env.NODE_ENV !== 'development');
+  const formRef = useRef<FormInstance | null>(null);
 
   const onReset = () => {
     formRef.current!.resetFields();
     onResetFn && onResetFn();
   };
 
-  const renderFormItem = React.useCallback((item: FormItemProps) => {
+  const renderFormItem = useCallback((item: FormItemProps) => {
     switch (item.type) {
       case 'input':
         return (
@@ -63,7 +63,15 @@ export const AntdForm = ({ formItems, onFinished, onReset: onResetFn }: AntdForm
     }
   }, []);
 
-  return (
+  useEffect(() => {
+    if (loaded === false) {
+      import('antd/dist/antd.min.css').then(() => {
+        setLoaded(true);
+      });
+    }
+  }, [loaded]);
+
+  return loaded ? (
     <Form ref={formRef} name='control-ref' onFinish={onFinished} layout='inline'>
       {formItems.map((item, i) => {
         return item.type === 'switch' ? (
@@ -87,5 +95,5 @@ export const AntdForm = ({ formItems, onFinished, onReset: onResetFn }: AntdForm
         <Button onClick={onReset}>重置</Button>
       </Form.Item>
     </Form>
-  );
+  ) : null;
 };
