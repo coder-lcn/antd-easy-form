@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { AntdForm } from '.';
 
 describe('ExampleComponent', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
-  })
-})
+    expect(AntdForm).toBeTruthy();
+  });
+});
