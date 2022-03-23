@@ -1,5 +1,4 @@
-
-export type FormType = 'input' | 'select' | 'number' | 'switch' | 'dateTime';
+export type FormType = 'input' | 'select' | 'number' | 'switch' | 'dateTime' | 'password';
 
 export type FormItemProps = {
   type: FormType;

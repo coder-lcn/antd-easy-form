@@ -1,6 +1,5 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
-import Button from 'antd/lib/button';
-import { DatePicker, Form, FormInstance, Input, InputNumber, Select, Switch } from 'antd';
+import { DatePicker, Form, FormInstance, Input, InputNumber, Select, Switch, Button } from 'antd';
 import { AntdFormProps, FormItemProps } from './types';
 
 const { RangePicker } = DatePicker;
@@ -17,18 +16,9 @@ export const AntdForm = ({ formItems, onFinished, onReset: onResetFn }: AntdForm
   const renderFormItem = useCallback((item: FormItemProps) => {
     switch (item.type) {
       case 'input':
-        return (
-          <Input
-            placeholder={item.placeholder}
-            autoComplete='off'
-            onPaste={(e) => {
-              const value = e.clipboardData.getData('Text');
-              setTimeout(() => {
-                formRef.current!.setFieldsValue({ [item.field]: value.trim() });
-              });
-            }}
-          />
-        );
+        return <Input placeholder={item.placeholder} autoComplete='off' />;
+      case 'password':
+        return <Input type='password' placeholder={item.placeholder} autoComplete='off' />;
       case 'number':
         return <InputNumber />;
       case 'switch':

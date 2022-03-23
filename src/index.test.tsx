@@ -39,13 +39,52 @@ describe('AntdForm', () => {
   });
 
   it('render type', () => {
-    const props: FormItemProps[] = [];
+    const props: FormItemProps[] = [
+      {
+        type: 'input',
+        field: 'username',
+        label: '用户名'
+      },
+      {
+        type: 'password',
+        field: 'password',
+        label: '密码'
+      },
+      {
+        type: 'number',
+        field: 'number',
+        label: '数字'
+      }
+    ];
+
     const onFinished = () => {};
 
     act(() => {
       render(<AntdForm formItems={props} onFinished={onFinished} />, container);
     });
 
-    console.log(container?.innerHTML);
+    const formElement = container?.querySelector('form');
+    expect(formElement).toBeTruthy();
+
+    props.forEach((item) => {
+      const formItem = formElement!.querySelector(`#control-ref_${item.field}`);
+      expect(formItem).toBeTruthy();
+
+      switch (item.type) {
+        case 'input':
+        case 'number': {
+          const input = formItem as HTMLInputElement;
+          expect(input.tagName).toBe('INPUT');
+          expect(input.type).toBe('text');
+          break;
+        }
+        case 'password': {
+          const input = formItem as HTMLInputElement;
+          expect(input.tagName).toBe('INPUT');
+          expect(input.type).toBe('password');
+          break;
+        }
+      }
+    });
   });
 });
