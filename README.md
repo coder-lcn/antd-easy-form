@@ -21,39 +21,34 @@ import { FormItemProps } from 'antd-easy-form/dist/types';
 const searchProps: FormItemProps[] = [
   {
     type: 'switch',
-    label: '是否有效',
+    label: 'working',
     field: 'selling',
     defaultValue: false
   },
   {
     type: 'input',
-    label: '用户名',
+    label: 'Username',
     field: 'username'
   },
   {
     type: 'dateTime',
-    label: '时间范围',
+    label: 'timeRange',
     field: 'timeRange'
   },
   {
     type: 'select',
-    label: '排序',
+    label: 'Order',
     field: 'order',
     selectOptions: [
       {
-        label: '价格',
+        label: 'price',
         value: 'price'
       },
       {
-        label: '时间',
+        label: 'time',
         value: 'time'
       }
     ]
-  },
-  {
-    type: 'switch',
-    field: 'asc',
-    label: '升序/降序'
   }
 ];
 
