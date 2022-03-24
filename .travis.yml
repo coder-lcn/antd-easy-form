@@ -4,9 +4,10 @@ node_js:
   - 14
 script:
   - npm run test
-  - npm run build
 depoly:
   provider: npm
   email: '$NPM _EMAIL'
   api_key: '$NPM_API_TOKEN'
   skip_cleanup: true
+  on:
+    branch: main
