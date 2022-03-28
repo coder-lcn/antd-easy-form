@@ -11,6 +11,7 @@ export type FormItemProps = {
   selectOptions?: { label: string; value: any }[];
   multiple?: boolean;
   defaultValue?: any;
+  showSearch?: boolean;
 };
 
 export interface AntdFormProps {

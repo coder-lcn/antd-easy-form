@@ -36,7 +36,12 @@ export const AntdForm = ({ formItems, onFinished, onReset: onResetFn, searchText
         );
       case 'select':
         return (
-          <Select style={{ minWidth: 100 }} allowClear mode={item.multiple ? 'multiple' : undefined}>
+          <Select
+            style={{ minWidth: 100 }}
+            allowClear
+            mode={item.multiple ? 'multiple' : undefined}
+            showSearch={item.showSearch}
+          >
             {item.selectOptions!.map((k) => {
               return (
                 <Select.Option key={k.value} value={k.value}>
