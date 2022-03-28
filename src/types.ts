@@ -17,4 +17,6 @@ export interface AntdFormProps {
   formItems: FormItemProps[];
   onFinished: (value: any) => void;
   onReset?: () => void;
+  searchText?: string;
+  resetText?: string;
 }

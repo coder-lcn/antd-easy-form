@@ -4,7 +4,7 @@ import { AntdFormProps, FormItemProps } from './types';
 
 const { RangePicker } = DatePicker;
 
-export const AntdForm = ({ formItems, onFinished, onReset: onResetFn }: AntdFormProps) => {
+export const AntdForm = ({ formItems, onFinished, onReset: onResetFn, searchText, resetText }: AntdFormProps) => {
   const [loaded, setLoaded] = useState(process.env.NODE_ENV !== 'development');
   const formRef = useRef<FormInstance | null>(null);
 
@@ -80,9 +80,9 @@ export const AntdForm = ({ formItems, onFinished, onReset: onResetFn }: AntdForm
       })}
       <Form.Item>
         <Button type='primary' htmlType='submit'>
-          搜索
+          {searchText ? searchText : '搜索'}
         </Button>
-        <Button onClick={onReset}>重置</Button>
+        <Button onClick={onReset}>{resetText ? resetText : '重置'}</Button>
       </Form.Item>
     </Form>
   ) : null;
