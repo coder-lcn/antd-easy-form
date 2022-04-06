@@ -12,6 +12,7 @@ export type FormItemProps = {
   multiple?: boolean;
   defaultValue?: any;
   showSearch?: boolean;
+  format?: string;
 };
 
 export interface AntdFormProps {

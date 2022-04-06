@@ -52,7 +52,7 @@ export const AntdForm = ({ formItems, onFinished, onReset: onResetFn, searchText
           </Select>
         );
       case 'dateTime':
-        return <RangePicker showTime format='MM/DD HH:mm' />;
+        return <RangePicker showTime format={item.format || 'MM/DD HH:mm'} />;
       default:
         return null;
     }
