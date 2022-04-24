@@ -18,7 +18,8 @@ const searchProps: FormItemProps[] = [
   {
     type: 'dateTime',
     label: '时间范围',
-    field: 'timeRange'
+    field: 'timeRange',
+    picker: 'month'
   },
   {
     type: 'select',

@@ -1,6 +1,7 @@
 import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { DatePicker, Form, FormInstance, Input, InputNumber, Select, Switch, Button } from 'antd';
 import { AntdFormProps, FormItemProps } from './types';
+import { RangePickerProps } from 'antd/lib/date-picker';
 
 const { RangePicker } = DatePicker;
 
@@ -52,7 +53,22 @@ export const AntdForm = ({ formItems, onFinished, onReset: onResetFn, searchText
           </Select>
         );
       case 'dateTime':
-        return <RangePicker showTime={item.showTime} format={item.format || 'MM/DD HH:mm'} />;
+        const props: RangePickerProps = {
+          format: item.format || 'MM/DD HH:mm'
+        };
+
+        if (item.picker) {
+          // @ts-ignore
+          props.picker = item.picker;
+          delete props.showTime;
+        }
+
+        if (item.showTime) {
+          props.showTime = item.showTime;
+          delete props.picker;
+        }
+
+        return <RangePicker {...props} />;
       default:
         return null;
     }

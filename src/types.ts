@@ -1,3 +1,4 @@
+
 export type FormType = 'input' | 'select' | 'number' | 'switch' | 'dateTime' | 'password';
 
 export type FormItemProps = {
@@ -14,6 +15,7 @@ export type FormItemProps = {
   showSearch?: boolean;
   format?: string;
   showTime?: boolean
+  picker?: "week" | "month" | "quarter" | "year"
 };
 
 export interface AntdFormProps {
